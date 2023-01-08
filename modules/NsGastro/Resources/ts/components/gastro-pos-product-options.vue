@@ -1,0 +1,145 @@
+<template>
+    <div class="ns-box shadow-lg w-2/3-screen md:w-1/3-screen overflow-hidden">
+        <div class="p-2 border-b ns-box-header flex justify-between items-center">
+            <span>{{ __m( 'Product Options', 'NsGastro' ) }}</span>
+            <div>
+                <ns-close-button @click="popupResolver( false )"></ns-close-button>
+            </div>
+        </div>
+        <div class="grid grid-cols-2">
+            <div @click="serveMeal()" :class="product.cooking_status === 'ready' ? 'cursor-pointer' : 'cursor-not-allowed'" class="h-32 border ns-numpad-key flex items-center justify-center flex-col">
+                <i class="text-6xl las la-concierge-bell"></i>
+                <span>{{ __m( 'Served', 'NsGastro' ) }}</span>
+            </div>
+            <div @click="cancelMeal()" :class="product.cooking_status !== 'canceled' ? 'cursor-pointer' : 'cursor-not-allowed'"  class="cursor-pointer h-32 border ns-numpad-key flex items-center justify-center flex-col">
+                <i class="text-6xl las la-times"></i>
+                <span>{{ __m( 'Cancel', 'NsGastro') }}</span>
+            </div>
+            <div @click="updateNote()" :class="product.cooking_status === 'pending' ? 'cursor-pointer' : 'cursor-not-allowed'" class="h-32 border ns-numpad-key flex items-center justify-center flex-col">
+                <i class="text-6xl las la-comment-alt"></i>
+                <span>{{ __m( 'Note', 'NsGastro') }}</span>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+    name : "gastro-pos-product-options",
+    computed: {
+        product() {
+            return this.$popupParams.product;
+        }
+    },
+    mounted() {
+        this.popupCloser();
+    },
+    methods: {
+        __m,
+        popupResolver,
+        popupCloser,
+
+        async updateNote() {
+            if ( this.product.cooking_status !== 'pending' ) {
+                return nsSnackBar.error( __m( 'Unable to edit this product notes.', 'NsGastro' ) ).subscribe();
+            }
+
+            try {
+                const note    =   await new Promise( ( resolve, reject ) => {
+                    Popup.show( nsPromptPopup, { 
+                        resolve, 
+                        reject, 
+                        input: this.product.cooking_note,
+                        title : 'Meal Note',
+                        message: 'The following note will be visible at the kitchen and on the kitchen slip.',
+                        onAction: ( output ) => {
+                            resolve( output );
+                        }
+                    })
+                });
+
+                this.product.cooking_note   =   note;
+
+                nsHttpClient.post( `/api/nexopos/v4/gastro/products/${this.product.id}/note`, { note })
+                    .subscribe( result => {
+                        this.popupResolver( this.product );
+                        nsSnackBar.success( result.message ).subscribe();
+                    }, ( error ) => {
+                        nsSnackBar.error( error.message || __m( 'An unexpected error occured.', 'NsGastro' ) ).subscribe();
+                    })
+            } catch( exception ) {
+                console.log( exception );
+            }
+        },
+
+        async serveMeal() {
+
+            if ( this.product.cooking_status !== 'ready' ) {
+                return nsSnackBar.error( __m( 'Unable to serve a meal that is not ready.', 'NsGastro' ) ).subscribe();
+            }
+
+            try {
+                const result    =   await new Promise( ( resolve, reject ) => {
+                    Popup.show( nsConfirmPopup, {
+                        title: __m( 'Would You Serve The Meal ?', 'NsGastro' ),
+                        resolve, 
+                        reject,
+                        message: __m( `You're about to serve the meal "{product}". note that this operation can\'t be canceled.`, 'NsGastro' ).replace( '{product}', this.product.name ),
+                        onAction : ( action ) => {
+                            if ( action ) {
+                                nsHttpClient.post( `/api/nexopos/v4/gastro/products/${this.product.id}/serve`, {
+                                        reason: action
+                                    })
+                                    .subscribe( result => {
+                                        nsSnackBar.success( result.message ).subscribe();
+                                        this.popupResolver( result );
+                                    }, ( error ) => {
+                                        nsSnackBar.error( error.message || __m( 'An unexpected error occured.', 'NsGastro' ) ).subscribe();
+                                    })
+                            }
+                        }
+                    })
+                })
+            } catch( exception ) {
+                console.log( exception );
+            }
+        },
+
+        printCanceledMeal( order_id ) {
+            Gastro.printOrderCanceledMealKitchen( order_id );
+        },
+
+        async cancelMeal() {
+
+            if ( this.product.cooking_status === 'canceled' ) {
+                return nsSnackBar.error( __m( 'Unable to cancel an already canceled product.', 'NsGastro' ) ).subscribe();
+            }
+
+            try {
+                const result    =   await new Promise( ( resolve, reject ) => {
+                    Popup.show( nsPromptPopup, {
+                        title: __m( 'Confirm Your Action', 'NsGastro' ),
+                        resolve, 
+                        reject,
+                        message: __m( `You're about to cancel "{product}". Please provide a reason for this action.`, 'NsGastro' ).replace( '{product}', this.product.name ),
+                        onAction : ( action ) => {
+                            if ( typeof action === 'string' ) {
+                                nsHttpClient.post( `/api/nexopos/v4/gastro/products/${this.product.id}/cancel`, {
+                                        reason: action
+                                    })
+                                    .subscribe( result => {
+                                        nsSnackBar.success( result.message ).subscribe();
+                                        this.product     =   result.data.product;
+                                    }, ( error ) => {
+                                        nsSnackBar.error( error.message || __m( 'An unexpected error occured.', 'NsGastro' ) ).subscribe();
+                                    })
+                            }
+                        }
+                    })
+                })
+            } catch( exception ) {
+                console.log( exception );
+            }
+        }
+    }
+}
+</script>

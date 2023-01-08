@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<module>
+    <namespace>NsGastro</namespace>
+    <version>4.8.10</version>
+    <author>Blair Jersyer</author>
+    <name>Gastro 4x - Restaurant Extension</name>
+    <description>Gastro 4.x provides a restaurant features on top of NexoPOS 4.x to ease restaurant management.</description>
+    <core min-version="4.8.5"/>
+</module>

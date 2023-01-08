@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<module>
+    <namespace>NsWooCommerce</namespace>
+    <version>4.8.1</version>
+    <author>Blair Jersyer</author>
+    <name>WooCommerce Sync For NexoPOS 4.x</name>
+    <description>This module adds an integration of WooCommerce on NexoPOS 4.x by synchronizing events to WooCommerce.</description>
+</module>

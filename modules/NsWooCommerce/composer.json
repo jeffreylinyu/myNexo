@@ -1,0 +1,13 @@
+{
+    "name": "blair2004/ns-woo-commerce",
+    "description": "Provide the integration of WooCommerce on NexoPOS 4.x",
+    "authors": [
+        {
+            "name": "blair2004",
+            "email": "carlosjohnsonluv2004@gmail.com"
+        }
+    ],
+    "require": {
+        "automattic/woocommerce": "^3.0"
+    }
+}

@@ -1,0 +1,158 @@
+.go-mt-4 {
+    margin-top: 1rem
+}
+.go-h-52 {
+    height: 13rem
+}
+.go-h-14 {
+    height: 3.5rem
+}
+.go-h-10 {
+    height: 2.5rem
+}
+.go-w-14 {
+    width: 3.5rem
+}
+.go-border-blue-600 {
+    --tw-border-opacity: 1;
+    border-color: rgb(37 99 235 / var(--tw-border-opacity))
+}
+.go-bg-yellow-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(234 179 8 / var(--tw-bg-opacity))
+}
+.go-bg-blue-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 130 246 / var(--tw-bg-opacity))
+}
+.go-bg-green-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(34 197 94 / var(--tw-bg-opacity))
+}
+.go-bg-red-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(239 68 68 / var(--tw-bg-opacity))
+}
+.go-bg-teal-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(20 184 166 / var(--tw-bg-opacity))
+}
+.go-text-9xl {
+    font-size: 8rem;
+    line-height: 1
+}
+.go-text-8xl {
+    font-size: 6rem;
+    line-height: 1
+}
+.light .item-yellow {
+    --tw-bg-opacity: 1;
+    background-color: rgb(254 249 195 / var(--tw-bg-opacity))
+}
+.light .item-yellow h4, .light .item-yellow h3, .light .item-yellow small, .light .item-yellow span {
+    --tw-text-opacity: 1;
+    color: rgb(51 65 85 / var(--tw-text-opacity))
+}
+.light .item-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 234 254 / var(--tw-bg-opacity))
+}
+.light .item-blue h4, .light .item-blue h3, .light .item-blue small, .light .item-blue span {
+    --tw-text-opacity: 1;
+    color: rgb(51 65 85 / var(--tw-text-opacity))
+}
+.light .item-green {
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 252 231 / var(--tw-bg-opacity))
+}
+.light .item-green h4, .light .item-green h3, .light .item-green small, .light .item-green span {
+    --tw-text-opacity: 1;
+    color: rgb(51 65 85 / var(--tw-text-opacity))
+}
+.light .item-red {
+    --tw-bg-opacity: 1;
+    background-color: rgb(254 226 226 / var(--tw-bg-opacity))
+}
+.light .item-red h4, .light .item-red h3, .light .item-red small, .light .item-red span {
+    --tw-text-opacity: 1;
+    color: rgb(51 65 85 / var(--tw-text-opacity))
+}
+.light .gastro-pill.info {
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.light .gastro-pill.success {
+    --tw-bg-opacity: 1;
+    background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.light .single-modifier {
+    --tw-bg-opacity: 1;
+    background-color: rgb(239 246 255 / var(--tw-bg-opacity))
+}
+
+.dark .item-yellow {
+    --tw-bg-opacity: 1;
+    background-color: rgb(202 138 4 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .item-yellow h4, .dark .item-yellow h3, .dark .item-yellow small, .dark .item-yellow span {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .item-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .item-blue h4, .dark .item-blue h3, .dark .item-blue small, .dark .item-blue span {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .item-green {
+    --tw-bg-opacity: 1;
+    background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .item-green h4, .dark .item-green h3, .dark .item-green small, .dark .item-green span {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .item-red {
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .item-red h4, .dark .item-red h3, .dark .item-red small, .dark .item-red span {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .gastro-pill.info {
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .gastro-pill.success {
+    --tw-bg-opacity: 1;
+    background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.dark .single-modifier {
+    --tw-bg-opacity: 1;
+    background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.hover\:go-bg-blue-600:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity))
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true">
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">./app</directory>
+    </include>
+  </coverage>
+  <testsuites>
+    <testsuite name="Feature">
+      <directory suffix="GastroInstallTables.php">./Tests/Feature</directory>
+      <directory suffix="GastroCreateCategories.php">./Tests/Feature</directory>
+      <directory suffix="GastroCreateTableAndAreas.php">./Tests/Feature</directory>
+      <directory suffix="GastroCreateKitchens.php">./Tests/Feature</directory>
+      <directory suffix="GastroCancelOrderFromKitchen.php">./Tests/Feature</directory>
+      <directory suffix="GastroTestSplitOrder.php">./Tests/Feature</directory>
+      <directory suffix="GastroCookOrderFromKitchen.php">./Tests/Feature</directory>
+      <directory suffix="GastroCreateOrderToTable.php">./Tests/Feature</directory>
+      <directory suffix="GastroCreateOrderWithSkipCooking.php">./Tests/Feature</directory>
+      <directory suffix="GastroTestPrintedItemsAreHidden.php">./Tests/Feature</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <server name="APP_ENV" value="TESTING"/>
+    <server name="BCRYPT_ROUNDS" value="4"/>
+    <server name="CACHE_DRIVER" value="array"/>
+    <server name="DB_CONNECTION" value="sqlite"/>
+    <server name="DB_DATABASE" value="tests/database.sqlite"/>
+    <server name="DB_HOST" value=""/>
+    <server name="DB_USERNAME" value=""/>
+    <server name="DB_PASSWORD" value=""/>
+    <server name="DB_PREFIX" value="nexopos_"/>
+    <server name="MAIL_MAILER" value="array"/>
+    <server name="QUEUE_CONNECTION" value="sync"/>
+    <server name="SESSION_DRIVER" value="array"/>
+    <server name="TELESCOPE_ENABLED" value="FALSE"/>
+    <server name="BROADCAST_DRIVER" value="log"/>
+    <server name="SANCTUM_STATEFUL_DOMAINS" value="nexopos-v4.std"/>
+    <server name="SESSION_DOMAIN" value="nexopos-v4.std"/>
+    <server name="NS_VERSION" value="false"/>
+  </php>
+</phpunit>
